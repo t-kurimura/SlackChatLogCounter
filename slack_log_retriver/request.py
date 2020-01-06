@@ -39,7 +39,9 @@ def exec_all():
     cursor = None
     target_message_ts_list = []
 
-    while latest_ts > oldest_time:
+    current_latest_ts = latest_ts
+
+    while current_latest_ts > oldest_time:
         response = None
         if cursor is None:
             response = client.conversations_history(
@@ -52,7 +54,7 @@ def exec_all():
 
         # retrieve last
         for item in response["messages"]:
-            num = int(float(item["ts"]))
+            current_latest_ts = int(float(item["ts"]))
 
         target_message_ts_list.append(
             _get_filtered_ts_list(search_word, response["messages"])
