@@ -1,4 +1,5 @@
 README.rst
+setup.py
 slack_log_retriver/__init__.py
 slack_log_retriver/request.py
 slack_log_retriver.egg-info/PKG-INFO
