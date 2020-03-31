@@ -1,8 +1,7 @@
 import re
 import urllib
 from datetime import date, datetime
-
-import slack
+from slack import WebClient
 
 token = ""
 
@@ -15,7 +14,7 @@ def search_messages(query):
     message_list = []
 
     s_quote = urllib.parse.quote(query)
-    client = slack.WebClient(token=token)
+    client = WebClient(token=token)
 
     for i in range(0, 100):
         data = client.search_messages(query=s_quote, page=i, sort="timestamp", sort_dir="asc")
